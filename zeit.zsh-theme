@@ -5,9 +5,15 @@ local dir="%{$fg_bold[white]%}%c$resetColor$resetColor"
 
 
 GIT_PROMPT_PREFIX="[%{$fg_bold[white]%}"
-GIT_PROMPT_SUFFIX="$resetColor] "
+GIT_PROMPT_SUFFIX="$resetColor]"
 GIT_PROMPT_DIRTY="%{$fg_bold[red]%}"
 GIT_PROMPT_CLEAN="%{$fg_bold[green]%}"
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[yellow]%}✚%{$resetColor%}"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}✹%{$resetColor%}"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[yellow]%}✖%{$resetColor%}"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[yellow]%}➜%{$resetColor%}"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[yellow]%}═%{$resetColor%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[yellow]%}✭%{$resetColor%}"
 
 # modified from https://github.com/robbyrussell/oh-my-zsh/blob/576ada138fc5eed3f58a4aff8141e483310c90fb/lib/git.zsh#L12
 function branch_is_dirty() {
@@ -42,6 +48,10 @@ function git_prompt() {
       echo "$GIT_PROMPT_PREFIX$GIT_PROMPT_CLEAN$branch$GIT_PROMPT_SUFFIX"
     fi
   fi
-
 }
-PROMPT='$logo ($hostname) $dir $(git_prompt)'
+
+function promptLogo() {
+  print -n "\n$logo "
+}
+
+PROMPT='($hostname) $dir $(git_prompt) $(git_prompt_status) $(promptLogo)'
