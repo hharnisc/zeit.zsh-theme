@@ -2,7 +2,7 @@
 ▲ZEIT's `zsh` theme
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zeit/zeit.zsh-theme/master/screenshot.png?v=2">
+  <img src="https://github.com/hharnisc/zeit.zsh-theme/raw/master/screenshot.png">
 </p>
 
 ## Install
